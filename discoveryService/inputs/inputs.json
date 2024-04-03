@@ -1,0 +1,78 @@
+{
+  "adra-discovery-service-cdk-stack": {
+    "adra-discovery-service-api-gateway": {
+      "separateHostedZones": false,
+      "ssmKeys": {},
+      "proxy": {},
+      "fileLocation": "Local",
+      "account": "19829352",
+      "region": "ap-southeast-2",
+      "schemaFileBasePath": "",
+      "responseFileBasePath": "",
+      "outputType": "Json",
+      "schemas": {},
+      "stage": "dev",
+      "serverUrl": "anidra.talksite.ai",
+      "resources": {},
+      "features": {
+        "Authorization": {
+          "path": "../ts-common-authorizer/src",
+          "env": {}
+        },
+        "DiscoveryService": {
+          "key": "adra"
+        }
+      },
+      "endpointsInfoArray": [
+        {
+          "id": 1,
+          "projectName": "anidra",
+          "projectShortName": "adra",
+          "resourceName": "discovery",
+          "path": "/services",
+          "serverUrl": "anidra.talksite.ai",
+          "stage": "dev",
+          "pathPrefix": "",
+          "httpMethod": "GET",
+          "featuresRef": [
+            "Authentication",
+            "ErrorHandler"
+          ],
+          "serviceMethodName": "adra-discovery-services-list",
+          "serviceId": "adra-discovery-services-list",
+          "permissions": [
+            {
+              "type": "AwsDynamoDB",
+              "name": "discovery-services",
+              "access": "READ"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "projectName": "anidra",
+          "projectShortName": "adra",
+          "resourceName": "discovery",
+          "stage": "dev",
+          "path": "/services/{serviceId}",
+          "serverUrl": "anidra.talksite.ai",
+          "httpMethod": "GET",
+          "pathPrefix": "",
+          "featuresRef": [
+            "Authentication",
+            "ErrorHandler"
+          ],
+          "serviceMethodName": "adra-discovery-services-read",
+          "serviceId": "adra-discovery-services-read",
+          "permissions": [
+            {
+              "type": "AwsDynamoDB",
+              "name": "discovery-services",
+              "access": "READ"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
